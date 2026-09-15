@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.encabezado-principal {
+    
+    background-color: #000000;
+    text-align: center;
+}
+.cuerpo-principal {
+    background-color: #000000;
+}
+.pie-principal {
+color: #ffffff;
+font-family: Helvetica
+}
