@@ -138,7 +138,7 @@ img {
 }
 @media(width >600px) {
     .site-header nav {
-        display: block;
+        display: none;
     }
     .site-header .boton-menu {
         display: none;
