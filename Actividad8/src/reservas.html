@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="encabezado"> <!-- agrego una clase al header para poder aplicar estilos -->
         <a href="index.html"> <!-- saco el span porque, para mejor navegacion, deberia utilizarse el logo -->
             <img src="./recursos/imagenes/logo-rs.svg" alt="Logo de Retiro Sustentable" width="150">
             <!-- en alt especifico lo que representa el logo -->
@@ -23,7 +23,7 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="contenido"> <!-- agrego una clase al main para poder aplicar estilos -->
         <h1>Reservas</h1>
         <h2>Contactanos</h2> <!-- agrego un h2 en vez de un h4 para una correcta jerarquia-->
         <form action="reservas.html" method="get"> <!-- agrego un form para que el usuario pueda enviar sus datos de reserva -->
@@ -49,7 +49,7 @@
             <button type="submit">Enviar</button>
         </form>
     </main>
-    <footer> <!-- agrego un footer en vez de un div-->
+    <footer class="pie-pagina"> <!-- agrego un footer en vez de un div-->
         <p>&copy; 2026 Retiro Sustentable. Todos los derechos reservados.</p>
     </footer>
 </body>

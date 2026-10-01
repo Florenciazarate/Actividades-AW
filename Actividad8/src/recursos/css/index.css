@@ -7,5 +7,25 @@
     box-sizing: border-box;
 }
 
+html{ /* agrego la fuente descargada y establezco el tamaño de fuente establecido */
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
 
-html{}
+}
+.encabezado{ /* agrego una clase al header para poder aplicar estilos */
+    background-color: #2f5d50;
+    color: white;
+    padding: 16px;
+    display: flex; /* utilizo flexbox para alinear los elementos del header */
+    justify-content: space-between; /* uso justify content de esta manera para que los elementos del header se separen */
+    align-items: center;
+}
+.contenido{ /* agrego una clase al main para poder aplicar estilos */
+    padding: 16px;
+}
+
+.pie-pagina{ /* agrego una clase al footer para poder aplicar estilos */
+    background-color: #2f5d50;
+    color: white;
+    padding: 16px;
+}
