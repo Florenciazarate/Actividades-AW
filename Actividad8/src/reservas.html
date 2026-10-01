@@ -1,27 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retiro Sustentable - Reservas</title>
+    <link rel="stylesheet" href="./recursos/css/index.css">
+    <!-- agrego un link al css para que pueda aplicar los estilos -->
 </head>
+
 <body>
-    <div>
+    <header>
+        <a href="index.html"> <!-- saco el span porque, para mejor navegacion, deberia utilizarse el logo -->
+            <img src="./recursos/imagenes/logo-rs.svg" alt="Logo de Retiro Sustentable" width="150">
+            <!-- en alt especifico lo que representa el logo -->
+        </a>
+
         <nav>
-            
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="reservas.html">Reservas</a></li> <!-- agrego un link a la pagina de reservas -->
+            </ul>
         </nav>
-    </div>
+    </header>
     <main>
         <h1>Reservas</h1>
-        <h4>Contactanos</h4>
-       <form>
-        <label for="">
-            <input type="text" name="" id="">
-        </label>
-       </form>
+        <h2>Contactanos</h2> <!-- agrego un h2 en vez de un h4 para una correcta jerarquia-->
+        <form action="reservas.html" method="get"> <!-- agrego un form para que el usuario pueda enviar sus datos de reserva -->
+
+            <label for="nombre">Nombre</label> 
+            <input type="text" id="nombre" name="nombre">
+
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+
+            <label for="desde">Fecha desde</label>
+            <input type="date" id="desde" name="desde">
+
+            <label for="hasta">Fecha hasta</label>
+            <input type="date" id="hasta" name="hasta">
+
+            <label for="comentario">Comentario</label>
+            <textarea id="comentario" name="comentario"></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
     </main>
-    <div>
+    <footer> <!-- agrego un footer en vez de un div-->
         <p>&copy; 2026 Retiro Sustentable. Todos los derechos reservados.</p>
-    </div>
+    </footer>
 </body>
+
 </html>

@@ -4,38 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retiro Sustentable - Catálogo</title>
+    <link rel="stylesheet" href="./recursos/css/index.css"> <!-- agrego un link al css para que pueda aplicar los estilos -->
 </head>
 <body>
-    <div>
-        <span> Retiro Sustentable</span>
+    <header>
+        <a href="index.html"> <!-- saco el span porque, para mejor navegacion, deberia utilizarse el logo -->
+            <img src="./recursos/imagenes/logo-rs.svg" alt="Logo de Retiro Sustentable" width="150"> <!-- en alt especifico lo que representa el logo -->
+        </a>
+       
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html">Inicio</a></li> 
+                <li><a href="reservas.html">Reservas</a></li> <!-- agrego un link a la pagina de reservas -->
             </ul>
         </nav>
-    </div>
+    </header>
     <main> 
         <h1>Catálogo de Cabañas</h1>
-        <h1>Cabañas para alquiler</h1>
+        <h2>Cabañas para alquiler</h2> <!-- agrego un h2 en vez de un h1 para que se entienda mejor la jerarquia-->
         <p>Bienvenido a nuestro catálogo de cabañas. Explora nuestras opciones y encuentra la que mejor se adapte a tus necesidades.</p>
-        <div>
+        <section> <!-- cambio el div por section, ya que estamos agrupando elementos relacionados -->
             <div>
-                <h2>Cabaña 1</h2>
-                <img src="./recursos/imagenes/modelo1.webp" alt="">
-                <p>Descripción de la Cabaña 1.</p>
+                <h3>Cabaña 1</h3> <!-- cambio el h2 por un h3 para mantener la jerarquia de los encabezados -->
+                <img src="./recursos/imagenes/modelo1.webp" alt="imagen modelo cabaña en la montaña" width="400"> <!-- agrego un alt para que sea accesible y describa la imagen, y tambien modifico el tamaño de la imagen para que no ocupe toda la pantalla  -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, voluptatum.</p>
+                <p> Precio por día: $100</p> <!-- agrego un p para el precio de la cabaña -->
+                <a href="reservas.html">Reservar</a> <!-- agrego un link a la pagina de reservas -->
             </div>
             <div>
-                <h2>Cabaña</h2>
-                <p>Descripción.</p>
+                <h3>Cabaña 2</h3> <!-- cambio el h2 por un h3 para mantener la jerarquia de los encabezados --> 
+                <img src="./recursos/imagenes/modelo2.webp" alt="imagen modelo cabaña en el monte" width="400"> <!-- agrego un alt para que sea accesible y describa la imagen, y tambien modifico el tamaño de la imagen para que no ocupe toda la pantalla  -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, voluptatum.</p>
+                <p> Precio por día: $150</p> <!-- agrego un p para el precio de la cabaña -->   
+                <a href="reservas.html">Reservar</a> <!-- agrego un link a la pagina de reservas -->
             </div>
             <div>
-                <h2>Cabaña</h2>
-                <p>Descripción de la Cabaña .</p>
+                <h3>Cabaña 3</h3> <!-- cambio el h2 por un h3 para mantener la jerarquia de los encabezados -->
+                <img src="./recursos/imagenes/modelo3.webp" alt="imagen modelo cabaña en el bosque" width="400"> <!-- agrego un alt para que sea accesible y describa la imagen, y tambien modifico el tamaño de la imagen para que no ocupe toda la pantalla -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, voluptatum.</p>
+                <p> Precio por día: $200</p> <!-- agrego un p para el precio de la cabaña -->
+                <a href="reservas.html">Reservar</a> <!-- agrego un link a la pagina de reservas -->
             </div>
-        </div>
+        </section>
     </main>
-    <div>
+    <footer> <!-- agrego un footer en vez de un div-->
         <p>&copy; 2026 Retiro Sustentable. Todos los derechos reservados.</p>
-    </div>
+    </footer>
 </body>
 </html>
