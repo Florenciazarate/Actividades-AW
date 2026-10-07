@@ -41,7 +41,10 @@ console.log(nombreM + ' ' + nombreA + ' ' + nombreN);
 let materia = 'Matematicas'
 console.log (materia + '-Sistemas');
 
-let parentesco
-const agus 
-const familiar
+let parentesco = 'madre de';
+const agus = 'agus'
+const familiar = 'lili'
+
+console.log(agus + parentesco +familiar);
+
 
