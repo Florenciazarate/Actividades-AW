@@ -1,21 +1,3 @@
-// console.log('Hola') //imprime por consola
-
-//Tipado
-// const nombre = 'Colapinto' //este nombre es constante por eso da error
-// nombre = 'Goku'
-// console.log(nombre)
-
-// let nombre = 'Colapinto'
-// nombre = 'Goku'
-// nombre = '2'
-// console.log(nombre)
-// console.log(typeof nombre)
-
-// let esMayorDeEdad = true
-
-// Operadores
-// Aritmeticos
-
 let edad =18;
 const mayoriaDeEdad = 18
 
@@ -51,3 +33,18 @@ else if (nota > 7) {
     console.log ('Excelente')
 }
 
+for (let i= 1; i <= 10; i++) {
+ console.log(i)
+}
+
+for (let i = 10; i >= 1; i--) {
+    console.log(i)
+}
+
+for (let i = 0; i < 20; i++) {
+    if (i % 2 === 0) {
+        console.log(`El número ${i} es par`)
+    } else {
+        console.log(`El número ${i} es impar`)
+    }
+}

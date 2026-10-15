@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="oscuro">
+<!-- data-tema establece el tema oscuro.  Para ver el tema claro, se quita el atributo-->
+
+<head>
+    <meta charset="UTF-8"> <!-- formato de codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ancho en dispositivos móviles -->
+    <title>Metadatos y sistemas de diseño</title> <!-- Título de la página para la pestaña del navegador -->
+    <meta name="description"
+        content="Guía breve sobre los metadatos del head en HTML5 y las variables CSS para crear sistemas de diseño consistentes y fáciles de mantener.">
+    <!-- Descripción de la página para los buscadores, aunque a veces los buscadores no la usan. -->
+    <meta name="robots" content="index, follow">
+    <!-- Instrucciones para los buscadores. con index, la pagina se incluye en los resultados de búsqueda. Con follow, los buscadores siguen los enlaces de la página. -->
+    <link rel="stylesheet" href="./recursos/estilos/estilos.css"> <!-- Enlace a los estilos CSS -->
+</head>
+
+<body>
+    <header>
+        <h1>Metadatos y sistemas de diseño</h1>
+        <img src="./recursos/img/metadatos-sistema-diseno.svg" class="imagen"
+            alt="Esquema del head de un documento HTML con sus metadatos, conectado por una flecha con variables de color declaradas en :root.">
+    </header>
+    <main>
+        <section>
+            <h2>Introducción</h2>
+            <p>Esta página reúne tres temas. Primero se explican los metadatos que se declaran en el head de un
+                documento HTML, que indican al navegador cómo interpretar la página y describen su contenido para los
+                buscadores. Después se presenta el sistema de diseño con variables CSS, que permite guardar colores y
+                tamaños de texto en un solo lugar para mantener la coherencia visual de toda la página. Luego se
+                muestra cómo esas variables se heredan y cómo pueden cambiar de valor dentro de un elemento. Por
+                último, dos demostraciones muestran la paleta de colores en los dos temas y la escala tipográfica.
+            </p>
+        </section>
+
+        <section>
+            <h2> <span>Metadatos</span> en HTML</h2>
+            <!--en este trabajo, usé span como marcador de estilo. Lo elegí ya que es un contenedor genérico sin significado propio, básicamente, para dar un resalte visual sin agregar un significado que el contenido no tiene. -->
+            <p>Los metadatos son información sobre el documento que se declara en el head y que, en general, no se
+                muestra como contenido de la página. Cumplen dos funciones: algunos le indican al navegador cómo
+                interpretar y presentar la página, como <span>charset</span> (codificación de caracteres) y
+                <span>viewport</span> (ancho en dispositivos móviles), y otros describen la página para los buscadores y
+                otros servicios, como <span>description</span>. El <span>title</span> cumple ambas: aparece en la
+                pestaña
+                del navegador y suele usarse como título en los resultados de búsqueda.
+            </p>
+        </section>
+        <section>
+            <h2> <span>Sistema de diseño</span> con variables CSS</h2>
+            <p>Un sistema de diseño es un conjunto de decisiones visuales que se definen una sola vez y se
+                reutilizan en toda la página: la paleta de colores, los tamaños de texto y los espacios. Su objetivo es
+                que el diseño sea coherente y que cambiarlo no obligue a modificar cada regla por separado.
+                En CSS, esas decisiones se guardan en <span>variables</span>, también llamadas propiedades
+                personalizadas.
+                Una variable se declara con el prefijo <span>--</span> dentro del selector <span>:root</span>, que
+                representa al elemento <span>html</span>, y se consulta con la función <span>var()</span>. Como todos
+                los elementos de la página descienden de <span>html</span>, heredan esas variables: cada valor se
+                escribe
+                una sola vez y, si cambia, se actualiza en todos los lugares donde se usa.
+            </p>
+        </section>
+        <section>
+            <h2><span>Herencia</span> y alcance de las variables</h2>
+            <p>Las variables declaradas en <span>:root</span> se heredan: cualquier elemento de la página puede
+                consultarlas con <span>var()</span>. Un elemento también puede volver a declarar una variable con otro
+                valor. Ese valor nuevo rige solo dentro de ese elemento y de sus descendientes, y esa zona se llama
+                alcance (scope). Fuera de ella, la variable conserva el valor declarado en <span>:root</span>.
+            </p>
+            <div class="tarjetas">
+                <article class="tarjeta">
+                    <h3>Color heredado</h3>
+                    <p>Esta tarjeta usa el color declarado en <span>:root</span>.</p>
+                </article>
+                <article class="tarjeta tarjeta-acento">
+                    <h3>Color propio</h3>
+                    <p>Esta tarjeta declara su propio color, y solo vale dentro de ella.</p>
+                </article>
+            </div>
+        </section>
+        <section>
+            <h2> <span>Paleta de colores</span> parametrizada</h2>
+            <p>Cada color se muestra en sus dos versiones: el cuadro de la izquierda tiene el valor del tema claro
+                y el de la derecha, el del tema oscuro. Cada cuadro toma su color de la variable que lleva escrita
+                al lado: los valores claros se declaran en <span>:root</span> y los oscuros en
+                <span>:root[data-tema="oscuro"]</span>. Si uno de esos valores cambia, el cuadro cambia con él.
+            </p>
+            </p>
+            <ul class="paleta">
+                <li class="muestra">
+                    <div class="muestra-par">
+                        <div class="muestra-color muestra-texto" data-tema="claro"></div>
+                        <!-- class="muestra-color muestra-texto" representa el color del texto en el tema claro , use -->
+                        <div class="muestra-color muestra-texto" data-tema="oscuro"></div>
+                    </div>
+                    <p>--color-texto = <span>#101010</span> (claro) | <span>#F2F2F2</span> (oscuro)</p>
+                </li>
+                <li class="muestra">
+                    <div class="muestra-par">
+                        <div class="muestra-color muestra-destacado" data-tema="claro"></div>
+                        <div class="muestra-color muestra-destacado" data-tema="oscuro"></div>
+                    </div>
+                    <p>--color-destacado = <span>#832396</span> (claro) | <span>#D07EE1</span> (oscuro)</p>
+                </li>
+                <li class="muestra">
+                    <div class="muestra-par">
+                        <div class="muestra-color muestra-acento" data-tema="claro"></div>
+                        <div class="muestra-color muestra-acento" data-tema="oscuro"></div>
+                    </div>
+                    <p>--color-acento = <span>#126365</span> (claro) | <span>#209ca0</span> (oscuro)</p>
+                </li>
+                <li class="muestra">
+                    <div class="muestra-par"> <!-- muestra-par es el contenedor de los dos cuadrados de un color. Es un div porque solo agrupa-->
+                        <div class="muestra-color muestra-fondo" data-tema="claro"></div> <!--  Cada color se muestra en dos cuadrados, uno por modo claro, y otro por modo oscuro. Los cuadrados llevan dos clases:
+                        muestra-color da la forma cuadrada y la otra, muestra-fondo, da el color.el data-tema hace que el cuadrado reciba los valores de ese tema  -->
+                        <div class="muestra-color muestra-fondo" data-tema="oscuro"></div>
+                    </div>
+                    <p>--color-fondo = <span>#FFFFFF</span> (claro) | <span>#101010</span> (oscuro)</p>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2> <span>Escala tipográfica</span> parametrizada</h2>
+            <p>Cada renglón está escrito con el tamaño de la variable que nombra. Todos salen del tamaño base del
+                texto, y cada escalón es el anterior multiplicado por 1.25.</p>
+            <ul class="escala">
+                <li class="escala-texto">--tamaño-texto = 1.2rem (tamaño base)</li>
+                <li class="escala-subtitulo-menor">--tamaño-subtitulo-menor = 1.5rem (1.2 × 1.25)</li>
+                <li class="escala-subtitulo">--tamaño-subtitulo = 1.875rem (1.5 × 1.25)</li>
+                <li class="escala-titulo">--tamaño-titulo = 2.34375rem (1.875 × 1.25)</li>
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>

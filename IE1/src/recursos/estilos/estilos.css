@@ -1,0 +1,208 @@
+@font-face {
+    font-family: tipografia-titulos; /* Nombre de la fuente que se usará en el CSS */
+    src: url(./fuentes/Quantico-Bold.ttf);
+} 
+
+@font-face {
+    font-family: tipografia-cuerpo;
+    src: url(./fuentes/Roboto-Variable.ttf);
+}
+
+/* ========== Tema claro ========== */
+/* El selector tiene dos partes separadas por una coma, significa que aplica a :root y a los elementos con el atributo data-tema="claro".
+lo segundo permite que un elemento tenga el tema claro aunque la página esté en modo oscuro.
+ Hice esto para poder hacer la sección de paleta de colores, y mostrar cada color en sus dos versiones.*/
+:root, [data-tema="claro"] { 
+    /* Definí los colores en base a "color contrast checker" para asegurar contraste adecuado. 
+    Dividí en 3 grupos la paleta de colores ya que usé la regla 60-30-10 de diseño.
+     un 60% de color dominante, color-texto en este caso, un 30% de color secundario, color-destacado y un 10% de color de acento, color-acento.
+     con respecto al --color-borde, lo agregué para poder ejemplificar en "paleta de colores parametrizadas" y
+     que se pueda ver correctamente la paleta de colores.*/
+    --color-texto: #101010;
+    --color-destacado: #832396;
+    --color-acento: #126365;
+    --color-fondo: #FFFFFF;
+    --color-borde: #8C7A99;
+    /* Utilicé "tipografía" para nombrar la familia tipográfica, y no "fuente", ya que refieren a conceptos distintos. La tipografía 
+    es el conjunto de estilos visuales de un tipo de letra, que es justo lo que estamos definiendo. Utilicé dos, una display, que sería quantico, para los títulos y subtítulos,
+    y otra sans-serif, con un estilo moderno, para el cuerpo del texto, en este caso, roboto. */
+    --tipografia-titulos: tipografia-titulos, helvetica, sans-serif;
+    --tipografia-cuerpo: tipografia-cuerpo, helvetica, sans-serif;
+    /* Para definir el tamaño de los textos, usé la regla de la escala tipográfica modular. Usé como base 1.2rem, que es el tamaño base, por una cuestion de legibilidad, y
+    a partir de ahí definí los tamaños de los títulos y subtítulos multiplicando el tamaño base por 1.25 respectivamente, que era el punto intermedio para que no sean saltos
+    ni muy grandes ni muy pequeños.*/
+    --tamaño-titulo: 2.34375rem;
+    --tamaño-subtitulo: 1.875rem;
+    --tamaño-subtitulo-menor: 1.5rem;
+    --tamaño-texto: 1.2rem;
+} /* Variables CSS para el tema claro.  */
+
+/* ========== Tema oscuro ========== */
+/* Igual que en el tema claro, el selector se aplica a :root con el atributo data-tema="oscuro"
+y también a cualquier elemento que lo tenga. Lo puse dos veces porque:
+ - :root[data-tema="oscuro"] aplica el tema a la página entera cuando <html> lleva el atributo.
+ - [data-tema="oscuro"] lo aplica a cualquier otro elemento que lo lleve (en este caso, la paleta de colores).*/
+:root[data-tema="oscuro"], [data-tema="oscuro"] {
+    /* lo unico que cambia es el color de fondo y los colores de los textos */
+    --color-texto: #F2F2F2;
+    --color-destacado: #D07EE1;
+    --color-acento: #209ca0;
+    --color-fondo: #101010;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 1rem;
+    max-width: 50rem;
+    margin-inline: auto;
+    background-color: var(--color-fondo);
+    line-height: 1.4; /* para que el cuerpo del texto sea más legible, se suele llevar una proporción más grande en el interlineado */
+
+}
+
+h1,h2,h3 {
+    line-height: 1.5; /* para que los títulos y subtítulos estén más juntos y se diferencien del cuerpo del texto, 
+    se suele llevar una proporción más chica en el interlineado */
+}
+
+h1 { /*solo comento en uno para explicar como hice uso de las "custom properties".
+     - font-family toma --tipografia-titulos.
+    - color toma --color-destacado: violeta en el tema claro y violeta aclarado en el oscuro,
+      sin tocar esta regla.
+    - font-size toma --tamaño-titulo, el último en la escala tipográfica.
+    Si el valor de una variable cambia en :root el h1 cambia tambien.
+    
+    */
+    font-family: var(--tipografia-titulos);
+    color: var(--color-destacado);
+    font-size: var(--tamaño-titulo);
+    margin-top: 1rem;
+}
+
+h2 {
+    font-family: var(--tipografia-titulos);
+    color: var(--color-texto);
+    font-size: var(--tamaño-subtitulo);
+}
+
+h2 span { 
+    color: var(--color-destacado);
+} /* para que los subtítulos tengan un color distinto en el texto, uso span y le asigno el color seleccionado.*/
+
+h3 {
+    font-family: var(--tipografia-titulos);
+    color: var(--color-texto);
+    font-size: var(--tamaño-subtitulo-menor);
+
+}
+
+p {
+    font-family: var(--tipografia-cuerpo);
+    font-size: var(--tamaño-texto);
+    color: var(--color-texto);
+    margin-bottom: 1rem; /* para que los párrafos tengan un espacio entre ellos y no se vean amontonados */
+}
+
+p span {
+    color: var(--color-acento);
+    font-weight: bold;
+} /* para que los textos tengan un color distinto al span de los títulos o subtítulos. */
+
+
+.imagen {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tarjeta {
+    border-left: 4px solid var(--color-destacado);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tarjeta h3 {
+    color: var(--color-destacado);
+}
+
+.tarjeta span { /* para que el texto resaltado de la tarjeta violeta sea color violeta, y no el turquesa determinado del span */
+    color: var(--color-destacado);
+}
+
+/*
+    Alcance (scope) de una variable: acá declaro --color-destacado, pero con el valor
+    de --color-acento. El borde de la tarjeta lo recibe directamente y el h3 y el span lo
+    heredan. Los tres consultan --color-destacado con var() y adentro de esta tarjeta la
+    encuentran con el valor nuevo. Fuera de esto, la variable va a mantener el valor declarado en
+    :root, por eso la otra tarjeta es violeta. Esta regla también funciona
+    para el modo oscuro, porque --color-acento también cambia en :root[data-tema="oscuro"].
+*/
+.tarjeta-acento {
+    --color-destacado: var(--color-acento);
+} 
+
+.paleta { /* para que la lista de colores no tenga viñetas y se vea más limpia */
+    list-style: none;
+}
+
+.muestra-par { /* para que los cuadrados de color estén alineados y tengan un espacio entre ellos */
+    display: flex;
+    gap: 2rem;
+    
+}
+
+.muestra-color { /* para que los cuadrados de color tengan el mismo tamaño y se vean bien, y para que tengan un borde que los diferencie del fondo */
+    width: 4rem;
+    height: 4rem;
+    border: 2px solid var(--color-borde);
+    margin-bottom: 0.3rem;
+}
+
+.muestra span {
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.muestra-texto {
+    background-color: var(--color-texto);
+}
+
+.muestra-destacado {
+    background-color: var(--color-destacado);
+}
+
+.muestra-acento {
+    background-color: var(--color-acento);
+}
+
+.muestra-fondo {
+    background-color: var(--color-fondo);
+}
+
+.escala {
+    list-style: none;
+    font-family: var(--tipografia-titulos);
+    color: var(--color-texto);
+    line-height: 2;
+}
+
+.escala-texto {
+    font-size: var(--tamaño-texto);
+}
+
+.escala-subtitulo-menor {
+    font-size: var(--tamaño-subtitulo-menor);
+}
+
+.escala-subtitulo {
+    font-size: var(--tamaño-subtitulo);
+}
+
+.escala-titulo {
+    font-size: var(--tamaño-titulo);
+}
