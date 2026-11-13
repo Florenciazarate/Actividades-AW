@@ -1,27 +1,40 @@
-// 1. DOM - EVENTOS -------
+// Actividad 13 - DOM, eventos y persistencia
 
-// Referenciamos los elementos del html
-const productosSeleccionados = document.getElementById('productos-seleccionados')
-const botonAgregar = document.getElementById('boton-agregar')
+// 1. DOM - EVENTOS --------------------------
 
-// 2. PERSISTENCIA -------
+// Referencias a los elementos del HTML
+const boton = document.querySelector("main button");
+const contador = document.querySelector("header nav span");
 
-// Recuperamos los productos guardados en localStorage.
-// localStorage guarda texto: si hay algo guardado, lo convertimos
-// en arreglo con JSON.parse. Si no hay nada (null), arrancamos vacío.
-const productosGuardados = localStorage.getItem('productosEnCarro')
-const productosEnCarro = productosGuardados ? JSON.parse(productosGuardados) : []
+// 2. PERSISTENCIA --------------------------
 
-// Mostramos en el header la cantidad recuperada
-productosSeleccionados.textContent = productosEnCarro.length
+// Clave con la que se guarda la cantidad en localStorage
+const CLAVE = "cantidadArticulos";
 
-// Escuchador del botón
-botonAgregar.addEventListener('click', (evento) => {
-    // Cuerpo del callback (handler) del escuchador
-    const idProducto = parseInt(botonAgregar.dataset.id)
-    productosEnCarro.push(idProducto)
-    productosSeleccionados.textContent = productosEnCarro.length
+// Lee la cantidad guardada. localStorage guarda texto, por eso se
+// convierte a número. Si no hay nada guardado (null), devuelve 0.
+function leerCantidadGuardada() {
+  const guardado = localStorage.getItem(CLAVE);
+  return guardado ? Number(guardado) : 0;
+}
 
-    // Guardamos el arreglo como texto con JSON.stringify
-    localStorage.setItem('productosEnCarro', JSON.stringify(productosEnCarro))
-})
+// Guarda la cantidad en localStorage
+function guardarCantidad(cantidad) {
+  localStorage.setItem(CLAVE, cantidad);
+}
+
+// Muestra la cantidad en el header
+function mostrarCantidad(cantidad) {
+  contador.textContent = cantidad;
+}
+
+// Estado inicial: se recupera lo guardado al cargar la página
+let cantidadArticulos = leerCantidadGuardada();
+mostrarCantidad(cantidadArticulos);
+
+// Cada clic suma un artículo, actualiza el header y lo guarda
+boton.addEventListener("click", () => {
+  cantidadArticulos++;
+  mostrarCantidad(cantidadArticulos);
+  guardarCantidad(cantidadArticulos);
+});
